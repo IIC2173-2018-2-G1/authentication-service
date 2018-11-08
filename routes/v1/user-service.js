@@ -6,14 +6,14 @@ const addTokenAndRedirect = require('./token-adder-redirect');
 router.post(
   '/',
   auth.optional,
-  (req, res, next) => addTokenAndRedirect(req, res, next, "http://user-service:8087/users/current")
+  (req, res, next) => addTokenAndRedirect(req, res, next, "http://user-service:8087/users/")
 );
 
 // Log in
 router.post(
   '/login',
   auth.optional,
-  (req, res, next) => addTokenAndRedirect(req, res, next, "http://user-service:8087/users/current")
+  (req, res, next) => addTokenAndRedirect(req, res, next, "http://user-service:8087/users/login")
 );
 
 // GET current logged user
@@ -23,7 +23,6 @@ router.get(
   (req, res, next) => addTokenAndRedirect(req, res, next, "http://user-service:8087/users/current")
 );
 
-// 
 
 module.exports = router;
 
