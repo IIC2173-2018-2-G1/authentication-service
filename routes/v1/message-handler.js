@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const addTokenAndRedirect = require('./token-adder-redirect');
 const auth = require('./auth');
+const queryString = require('query-string');
 
 // Messages stuff!
 // create message
@@ -12,9 +13,16 @@ router.post(
 
 // get message
 router.get(
-  '/:content',
+  '/',
   auth.required,
-  (req, res, next) => addTokenAndRedirect(req, res, next, `http://message-service:8083/messages/${req.params.content}`),
+  (req, res, next) => {
+    addTokenAndRedirect(
+      req,
+      res,
+      next,
+      `http://message-service:8083/messages/?${queryString.stringify(req.query)}`
+    )
+  },
 );
 
 
