@@ -20,7 +20,7 @@ router.get(
       req,
       res,
       next,
-      `http://message-service:8083/messages`
+      `http://message-service:8083/messages?channel_id=${req.query.channel_id}&hashtag=req.query.hashtag&count=req.query.count&start=req.query.start`
     )
   },
 );
