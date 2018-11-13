@@ -20,7 +20,7 @@ router.get(
       req,
       res,
       next,
-      `http://message-service:8083/messages/?${queryString.stringify(req.query)}`
+      `http://message-service:8083/messages`
     )
   },
 );

@@ -9,6 +9,7 @@ let addTokenAndRedirect = (req, res, next, url) => {
       .then((user) => {
         let proxy = requestProxy({
           url: url,
+          params: req.params,
           headers: {
             "current-user": JSON.stringify(user)
           }
