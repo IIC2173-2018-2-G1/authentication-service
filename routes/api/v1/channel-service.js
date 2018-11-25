@@ -8,5 +8,14 @@ router.all(
   (req, res, next) => addTokenAndRedirect(req, res, next, "http://channel-service:8084/")
 );
 
+router.put("/:channelId", auth.required, (req, res, next) =>
+  addTokenAndRedirect(
+    req,
+    res,
+    next,
+    `http://channel-service:8084/${req.params.channelId}`
+  )
+);
+
 module.exports = router;
 
