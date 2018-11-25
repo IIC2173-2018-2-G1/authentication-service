@@ -1,9 +1,9 @@
-const express = require('express');
-const proxy = require('express-http-proxy');
+const express = require("express");
 const router = express.Router();
 
 
-router.use('/v1', require('./v1'));
-router.use(/^\/(?!v1).*/, proxy("http://frontend:3000/"))
+router.use("/api/v1", require("./api/v1"));
+router.use(require("./frontend"));
+
 
 module.exports = router;
