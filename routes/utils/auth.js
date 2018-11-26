@@ -1,7 +1,12 @@
 const jwt = require('express-jwt');
 
 const getSession = (req) => {
-  return req.cookies._session
+  const {_session} = req.cookies;
+  if (typeof _session === "undefined"){
+    const { headers: { authorization } } = req;
+    return authorization || "";
+  } 
+  return _session || ""
 };
 
 const auth = {
